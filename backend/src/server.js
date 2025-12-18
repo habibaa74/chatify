@@ -4,6 +4,7 @@ import path from "path";
 
 import authRoutes from "./routes/auth.js";
 import messageRoutes from "./routes/message.js";
+import { connectDB } from "./lib/db.js";
 
 dotenv.config();
 
@@ -11,6 +12,9 @@ const app = express();
 const __dirname = path.resolve();
 
 const PORT = process.env.PORT || 3000;
+
+// to get data that user send in the body
+app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/,messages", messageRoutes);
@@ -24,5 +28,5 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 app.listen(PORT, () => {
-  console.log("server running in port 3000");
+  connectDB();
 });
