@@ -6,8 +6,6 @@ import authRoutes from "./routes/auth.js";
 import messageRoutes from "./routes/message.js";
 import { connectDB } from "./lib/db.js";
 
-dotenv.config();
-
 const app = express();
 const __dirname = path.resolve();
 
