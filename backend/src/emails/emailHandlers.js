@@ -5,7 +5,7 @@ export const sendWelcomEmail = async (email, name, clientUrl) => {
   const { data, error } = await resendClient.emails.send({
     from: `${sender.name}<${sender.email}>`,
     to: email,
-    subject: "Wwelcome to Chatify",
+    subject: "Welcome to Chatify",
     html: createWelcomeEmailTemplate(name, clientUrl),
   });
   if (error) {
