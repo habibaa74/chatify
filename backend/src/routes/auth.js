@@ -13,11 +13,11 @@ const router = express.Router();
 router.get("/test", arcjetProtection, (req, res) => {
   return res.status(200).json({ message: "Test route" });
 });
+router.post("/signup", signup);
+router.post("/login", login);
 
 router.use(arcjetProtection);
 
-router.post("/signup", signup);
-router.post("/login", login);
 router.post("/logout", logout);
 router.post("/update-profile", protect, updateProfile);
 
