@@ -20,8 +20,8 @@
     "url": "https://github.com/habibaa74/chatify/issues"
   },
   "homepage": "https://github.com/habibaa74/chatify#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "daisyui": "^4.12.24"
+  }
 }
-
-
-
