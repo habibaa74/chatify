@@ -1,4 +1,4 @@
-import { sendWelcomEmail } from "../emails/emailHandlers.js";
+import { sendWelcomeEmail } from "../emails/emailHandlers.js";
 import { generateToken } from "../lib/utils.js";
 import User from "../Models/User.js";
 import bcrypt from "bcryptjs";
@@ -48,7 +48,7 @@ export const signup = async (req, res) => {
         profilePic: newUser.profilePic,
       });
       try {
-        await sendWelcomEmail(
+        await sendWelcomeEmail(
           savedUser.email,
           savedUser.fullName,
           ENV.CLIENT_URL
