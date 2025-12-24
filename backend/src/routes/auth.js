@@ -19,7 +19,7 @@ router.post("/login", login);
 router.use(arcjetProtection);
 
 router.post("/logout", logout);
-router.post("/update-profile", protect, updateProfile);
+router.put("/update-profile", protect, updateProfile);
 
 router.get("/check", protect, (req, res) => res.status(200).json(req.user));
 

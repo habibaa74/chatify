@@ -7,6 +7,7 @@ import ChatContainer from "../components/ChatContainer";
 import ChatsList from "../components/ChatsList";
 import NoConversationPlaceholder from "../components/NoConversationPlaceholder";
 import ProfileHeader from "../components/ProfileHeader";
+import ContactList from "../components/ContactList";
 function ChatPage() {
   const { activeTab, selectedUser } = useChatStore();
   return (
