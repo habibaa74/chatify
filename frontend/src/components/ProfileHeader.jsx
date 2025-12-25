@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
-import { VolumeOffIcon, Volume2Icon, LogOutIcon } from "lucide-react";
+import { LogOutIcon, VolumeOffIcon, Volume2Icon } from "lucide-react";
 import { useAuthStore } from "../store/useAuthStore";
 import { useChatStore } from "../store/useChatStore";
-import { useNavigate } from "react-router";
+
 const mouseClickSound = new Audio("/sounds/mouse-click.mp3");
-function profileHeader() {
+
+function ProfileHeader() {
   const { logout, authUser, updateProfile } = useAuthStore();
   const { isSoundEnabled, toggleSound } = useChatStore();
   const [selectedImg, setSelectedImg] = useState(null);
@@ -14,6 +15,7 @@ function profileHeader() {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (!file) return;
+
     const reader = new FileReader();
     reader.readAsDataURL(file);
 
@@ -23,11 +25,12 @@ function profileHeader() {
       await updateProfile({ profilePic: base64Image });
     };
   };
+
   return (
     <div className="p-6 border-b border-slate-700/50">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          {/* Avatar */}
+          {/* AVATAR */}
           <div className="avatar online">
             <button
               className="size-14 rounded-full overflow-hidden relative group"
@@ -35,13 +38,14 @@ function profileHeader() {
             >
               <img
                 src={selectedImg || authUser.profilePic || "/avatar.png"}
-                alt="User Image"
+                alt="User image"
                 className="size-full object-cover"
               />
               <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
                 <span className="text-white text-xs">Change</span>
               </div>
             </button>
+
             <input
               type="file"
               accept="image/*"
@@ -50,14 +54,17 @@ function profileHeader() {
               className="hidden"
             />
           </div>
+
+          {/* USERNAME & ONLINE TEXT */}
           <div>
-            {/* USERNAME & ONLINE TEXT */}
             <h3 className="text-slate-200 font-medium text-base max-w-[180px] truncate">
               {authUser.fullName}
             </h3>
+
             <p className="text-slate-400 text-xs">Online</p>
           </div>
         </div>
+
         {/* BUTTONS */}
         <div className="flex gap-4 items-center">
           {/* LOGOUT BTN */}
@@ -67,6 +74,7 @@ function profileHeader() {
           >
             <LogOutIcon className="size-5" />
           </button>
+
           {/* SOUND TOGGLE BTN */}
           <button
             className="text-slate-400 hover:text-slate-200 transition-colors"
@@ -90,5 +98,4 @@ function profileHeader() {
     </div>
   );
 }
-
-export default profileHeader;
+export default ProfileHeader;
