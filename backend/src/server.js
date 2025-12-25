@@ -13,7 +13,7 @@ const __dirname = path.resolve();
 const PORT = ENV.PORT || 3000;
 
 // to get data that user send in the body
-app.use(express.json());
+app.use(express.json({ limit: "5mb" }));
 
 app.use(cors({ origin: ENV.CLIENT_URL, credentials: true }));
 app.use(cookieParser());
